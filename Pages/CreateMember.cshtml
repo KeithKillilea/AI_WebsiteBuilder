@@ -1,0 +1,90 @@
+﻿@page
+@model AI_WebsiteBuilder.Pages.CreateMemberModel
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize(Policy = "AdminOnly")]
+
+<div class="section-top">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="top-title">
+                    <h4>Create Member Account</h4>
+                </div>
+                <div class="main-actions">
+                    <ol class="breadcrumb float-xl-end">
+                        <li class="breadcrumb-item"><a href="/AdminDashboard">Admin Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="/MembersManagement">Account Management</a></li>
+                        <li class="breadcrumb-item active">New Registered Account</li>
+                    </ol>
+                </div>
+            </div>
+            <hr />
+        </div>
+    </div>
+</div>
+
+<!-- Notifications -->
+@if (!string.IsNullOrEmpty(TempData["StatusMessage"] as string))
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["StatusMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+@if (!string.IsNullOrEmpty(TempData["StatusMessage"] as string))
+{
+    <div class="alert alert-success">@TempData["StatusMessage"]</div>
+}
+
+
+<div class="section-bottom">
+	<div class="row">
+		<div class="col-md-6 card-flexfill">
+			<div class="card">
+				<div class="card-body">
+                    <form method="post">
+                        <div class="form-group">
+                            <label>Email:</label>
+                            <input asp-for="Input.Email" class="form-control" />
+                            <span asp-validation-for="Input.Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Role:</label>
+                            <select asp-for="Input.Role" class="form-control form-select">
+                                <option value="Member">Member</option>
+                                <option value="Admin">Admin</option>
+                            </select>
+                            <span asp-validation-for="Input.Role" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Password:</label>
+                            <input asp-for="Input.Password" type="password" class="form-control" />
+                            <span asp-validation-for="Input.Password" class="text-danger"></span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a asp-page="./MembersManagement" class="btn btn-secondary mt-1">Cancel</a>
+                            <button type="submit" class="btn btn-outline mt-1">Create Account</button>
+                        </div>
+                    </form>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="panel-body">
+				<div class="note alert-warning">
+					<div class="note-icon"><i class="fa fa-lightbulb"></i></div>
+					<div class="note-content">
+						<h5><b>Create Account</b></h5>
+						<p>
+							Register a new Member Account here that can be used to login. Once a new Registered Account is created, they can login and start creating website pages.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

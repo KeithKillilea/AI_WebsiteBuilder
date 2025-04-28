@@ -1,0 +1,67 @@
+﻿@page
+@model RegisterConfirmationModel
+@{
+    ViewData["Title"] = "Register confirmation";
+}
+
+<div class="section-top">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="d-flex justify-content-between flex-wrap">
+                <div class="top-title">
+                    <h4>Register confirmation</h4>
+                </div>
+                <div class="main-actions">
+                </div>
+            </div>
+            <hr />
+        </div>
+    </div>
+</div>
+<div class="section-bottom">
+    <div class="row">
+        <div class="col-md-6 card-flexfill">
+            <div class="card">
+                <div class="card-body">
+                    @{
+                        if (@Model.DisplayConfirmAccountLink)
+                        {
+                            <p>
+                                <b>Confirm Your Account</b>
+                            </p>
+                            <a id="confirm-link" href="@Model.EmailConfirmationUrl" class="btn btn-success mt-1">Click here to confirm your account</a>
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel-body">
+                <div class="note alert-warning">
+                    <div class="note-icon"><i class="fa fa-lightbulb"></i></div>
+                    <div class="note-content">
+                        @{
+                            if (@Model.DisplayConfirmAccountLink)
+                            {
+                                <p>
+                                    This app does not currently have a real email sender registered, see <a href="https://aka.ms/aspaccountconf">these docs</a> for how to configure a real email sender.
+                                    Normally this would be emailed.
+                                </p>
+                            }
+                            else
+                            {
+                                <p>
+                                    Please check your email to confirm your account.
+                                </p>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

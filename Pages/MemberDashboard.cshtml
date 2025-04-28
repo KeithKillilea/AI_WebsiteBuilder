@@ -1,0 +1,7 @@
+﻿@page
+@model AI_WebsiteBuilder.Pages.MemberDashboardModel
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize(Policy = "MemberOnly")]
+
+<h1>Member Dashboard</h1>
+<p>Welcome, Member!</p>

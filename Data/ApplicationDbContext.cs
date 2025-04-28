@@ -9,5 +9,8 @@ namespace AI_WebsiteBuilder.Data
             : base(options)
         {
         }
+
+        public DbSet<AI_WebsiteBuilder.Models.WebPage> WebPages { get; set; }
+
     }
 }

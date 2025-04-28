@@ -4,7 +4,102 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="section-top">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="top-title">
+                    <h4>Welcome to the AI Website Builder Platform</h4>
+                </div>
+                <div class="main-actions">
+                    <ol class="breadcrumb float-xl-end">
+                        <li class="breadcrumb-item active">Public Landing Page</li>
+                    </ol>
+                </div>
+            </div>
+            <hr />
+        </div>
+    </div>
+</div>
+<div class="section-bottom">
+    @if (!User.Identity.IsAuthenticated || (!User.IsInRole("Admin") && !User.IsInRole("Member")))
+    {
+        <div class="row">
+            <div class="col-md-7 card-flexfill">
+                <div class="card">
+                    <div class="card-body">
+                        <a href="/Identity/Account/Login" class="widget-card" data-id="widget">
+                            <div class="widget-card-cover"></div>
+                            <div class="widget-card-content">
+                                <h5 class="text-body"><b>ACCOUNT LOGIN</b></h5>
+                                <h6 class="text-subbody"><b>Click here to login to your registered Member Account</b></h6>
+                                <i class="fa fa-sign-in fa-5x"></i>
+                            </div>
+                            <div class="widget-card-footer">
+                                <span class="text-body">AI Website Builder Platform 2025 - ATU</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <a href="/Identity/Account/Register" class="widget-card" data-id="widget">
+                            <div class="widget-card-cover"></div>
+                            <div class="widget-card-content">
+                                <h5 class="text-body"><b>REGISTER ACCOUNT</b></h5>
+                                <h6 class="text-subbody"><b>Click here to registered your new Member Account</b></h6>
+                                <i class="fa fa-id-card fa-5x"></i>
+                            </div>
+                            <div class="widget-card-footer">
+                                <span class="text-body">AI Website Builder Platform 2025 - ATU</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="panel-body">
+                    <div class="note alert-secondary">
+                        <div class="note-content">
+                            <p>
+                                Please note the <b>Admin Account</b> holds all the main features & functions of the platform.
+                            </p>
+                            <p>
+                                <b>Admin Account</b>
+                                <br />
+                                <b>Email:</b> admin@atu.ie
+                                <br />
+                                <b>Password:</b> Admin@1
+                                <br />
+                                <br />
+                                <b>Member Account</b>
+                                <br />
+                                <b>Email:</b> member@atu.ie
+                                <br />
+                                <b>Password:</b> Member@1
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel-body">
+                <div class="note alert-warning">
+                    <div class="note-icon"><i class="fa fa-lightbulb"></i></div>
+                    <div class="note-content">
+                        <h5><b>AI Website Builder Platform</b></h5>
+                        <p>
+                            Please Register a new Member Account, where you can begin to create new Website Pages. Alternatively you can Login to your existing account.
+                        </p>
+                        <p>
+                            We have two available accounts for you to jump straight into with. A Member Account and the Admin Account.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

@@ -1,0 +1,80 @@
+﻿@page
+@model AI_WebsiteBuilder.Pages.WPages.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="section-top">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="d-flex justify-content-between flex-wrap">
+                <div class="top-title">
+                    <h4>Website Pages</h4>
+                </div>
+                <div class="main-actions">
+                    <a class="btn btn-outline" asp-page="/WPages/Create">Create Website Page</a>
+                </div>
+            </div>
+            <hr />
+        </div>
+    </div>
+</div>
+
+<!-- Notifications -->
+@if (!string.IsNullOrEmpty(TempData["StatusMessage"] as string))
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["StatusMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<table class="table table-responsive table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.WebPage[0].Member)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WebPage[0].PageName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WebPage[0].PageDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WebPage[0].PageContent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WebPage[0].CreatedAt)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.WebPage) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Member)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PageName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PageDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PageContent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedAt)
+            </td>
+            <td>
+                    <a asp-page="./Edit" asp-route-id="@item.ID" class="btn btn-primary btn-sm">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.ID" class="btn btn-warning btn-sm">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.ID" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

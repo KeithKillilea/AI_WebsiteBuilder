@@ -1,0 +1,7 @@
+﻿@page
+@model AI_WebsiteBuilder.Pages.AdminDashboardModel
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize(Policy = "AdminOnly")]
+
+<h1>Admin Dashboard</h1>
+<p>Welcome, Admin!</p>

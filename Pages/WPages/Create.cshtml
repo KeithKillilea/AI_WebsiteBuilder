@@ -1,0 +1,96 @@
+﻿@page
+@model AI_WebsiteBuilder.Pages.WPages.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="section-top">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="top-title">
+                    <h4>Create Website Page</h4>
+                </div>
+                <div class="main-actions">
+                    <ol class="breadcrumb float-xl-end">
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="breadcrumb-item"><a href="/AdminDashboard">Admin Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="./Index">Website Pages</a></li>
+                        }
+                        @if (User.IsInRole("Member"))
+                        {
+                            <li class="breadcrumb-item"><a href="/MemberDashboard">Member Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="./Index">Website Pages</a></li>
+                        }
+                        <li class="breadcrumb-item active">Create Page Details</li>
+                    </ol>
+                </div>
+            </div>
+            <hr />
+        </div>
+    </div>
+</div>
+
+<div class="section-bottom">
+    <div class="row">
+        <div class="col-md-6 card-flexfill">
+            <div class="card">
+                <div class="card-body">
+                    <form method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                        <!-- Hidden fields -->
+                        <input type="hidden" asp-for="WebPage.Member" />
+                        <input type="hidden" asp-for="WebPage.CreatedAt" />
+
+                        <div class="form-group">
+                            <span class="text-danger">*</span>
+                            <label asp-for="WebPage.PageName" class="control-label"></label>
+                            <input asp-for="WebPage.PageName" class="form-control" />
+                            <span asp-validation-for="WebPage.PageName" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="WebPage.PageDescription" class="control-label"></label>
+                            <input asp-for="WebPage.PageDescription" class="form-control" />
+                            <span asp-validation-for="WebPage.PageDescription" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="WebPage.PageContent" class="control-label"></label>
+                            <input asp-for="WebPage.PageContent" class="form-control" />
+                            <span asp-validation-for="WebPage.PageContent" class="text-danger"></span>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a asp-page="Index" class="btn btn-secondary mt-1">Cancel</a>
+                            <button type="submit" value="Create" class="btn btn-outline mt-1">Create Page</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="panel-body">
+                <div class="note alert-warning">
+                    <div class="note-icon"><i class="fa fa-lightbulb"></i></div>
+                    <div class="note-content">
+                        <h5><b>Create Website Page</b></h5>
+                        <p>
+                            Update the details of the Website Page here. Please ensure all details are correct and click save.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

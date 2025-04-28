@@ -1,0 +1,86 @@
+﻿@page
+@model AI_WebsiteBuilder.Pages.MembersManagementModel
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<IdentityUser> UserManager
+@attribute [Authorize(Policy = "AdminOnly")]
+
+<div class="section-top">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="d-flex justify-content-between flex-wrap">
+                <div class="top-title">
+                    <h4>Members Management</h4>
+                </div>
+                <div class="main-actions">
+                    <a class="btn btn-outline" asp-page="/CreateMember">Create Member Account</a>
+                </div>
+            </div>
+            <hr />
+        </div>
+    </div>
+</div>
+
+<!-- Notifications -->
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["SuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<table class="table table-responsive table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Created At</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model.Users)
+        {
+            <tr>
+                <td>@user.Email</td>
+                <td>@user.Role</td>
+                <td>@user.CreatedAt.ToString("yyyy-MM-dd")</td>
+                <td>
+                    <a asp-page="/EditMember" asp-route-id="@user.Id" class="btn btn-primary btn-sm">Edit Account</a>
+                    <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal" onclick="setUserIdToDelete('@user.Id')">Delete</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- Delete Modal -->
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmDeleteModalLabel">Confirm Deletion</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete this member?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <a id="confirmDeleteButton" class="btn btn-danger" href="#">Yes, Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        var userIdToDelete = null;
+
+        function setUserIdToDelete(id) {
+            userIdToDelete = id;
+            document.getElementById('confirmDeleteButton').href = '/DeleteMember?id=' + userIdToDelete;
+        }
+    </script>
+}
