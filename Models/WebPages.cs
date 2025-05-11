@@ -6,10 +6,10 @@ namespace AI_WebsiteBuilder.Models
     public class WebPage
     {
         [Key]
-        public int ID { get; set; } // The ID of this page
+        public int ID { get; set; } // Primary Key for this page
 
         [Required]
-        public string? Member { get; set; } // Holds the email address of the user who created the page (User cannot edit this)
+        public string? Member { get; set; } // Email address of the user who created the page (User cannot edit this)
 
         [Required]
         [Display(Name = "Page Name")]

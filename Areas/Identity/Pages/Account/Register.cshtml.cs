@@ -92,7 +92,7 @@ namespace AI_WebsiteBuilder.Areas.Identity.Pages.Account
                 {
                     _logger.LogInformation("User created a new account with password.");
 
-                    // ✅ Automatically assign "Member" role after Register
+                    // Automatically assign "Member" role after Register
                     if (!await _roleManager.RoleExistsAsync("Member"))
                     {
                         await _roleManager.CreateAsync(new IdentityRole("Member"));

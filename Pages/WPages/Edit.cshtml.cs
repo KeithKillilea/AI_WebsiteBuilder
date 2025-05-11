@@ -77,8 +77,6 @@ namespace AI_WebsiteBuilder.Pages.WPages
             return RedirectToPage("./Index");
         }
 
-
-
         private bool WebPageExists(int id)
         {
             return _context.WebPages.Any(e => e.ID == id);

@@ -1,0 +1,22 @@
+﻿@page
+@model AI_WebsiteBuilder.Pages.WPages.OpenAITestModel
+
+@{
+    ViewData["Title"] = "Test OpenAI Connection";
+}
+
+<h2>Test OpenAI Landing Page Generation</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label for="Prompt">Describe your landing page</label>
+        <textarea asp-for="Prompt" class="form-control" rows="4" placeholder="e.g. Hero section for AI-powered task manager..."></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary mt-2">Generate</button>
+</form>
+
+@if (Model.Result != null)
+{
+    <h3 class="mt-4">Generated Output:</h3>
+    <pre style="background:#f9f9f9;padding:10px;border:1px solid #ccc;">@Model.Result</pre>
+}

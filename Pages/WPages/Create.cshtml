@@ -38,7 +38,7 @@
         <div class="col-md-6 card-flexfill">
             <div class="card">
                 <div class="card-body">
-                    <form method="post">
+                    <form method="post" id="webPageForm">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
                         <!-- Hidden fields -->
@@ -47,26 +47,39 @@
 
                         <div class="form-group">
                             <span class="text-danger">*</span>
-                            <label asp-for="WebPage.PageName" class="control-label"></label>
-                            <input asp-for="WebPage.PageName" class="form-control" />
+                            <label asp-for="WebPage.PageName" class="control-label">Business Name (e.g., Lakeside Golf Club)</label>
+                            <input asp-for="WebPage.PageName" class="form-control" placeholder="e.g., Urban Café or FitZone Gym" />
                             <span asp-validation-for="WebPage.PageName" class="text-danger"></span>
                         </div>
 
                         <div class="form-group">
-                            <label asp-for="WebPage.PageDescription" class="control-label"></label>
-                            <input asp-for="WebPage.PageDescription" class="form-control" />
+                            <label asp-for="WebPage.PageDescription" class="control-label">Business Type</label>
+                            <select asp-for="WebPage.PageDescription" class="form-control">
+                                <option value="">-- Select Business Type --</option>
+                                <option value="Golf Club">Golf Club</option>
+                                <option value="Restaurant">Restaurant</option>
+                                <option value="Retail Store">Retail Store</option>
+                                <option value="Fitness Studio">Fitness Studio</option>
+                                <option value="Consulting Agency">Consulting Agency</option>
+                                <option value="Other">Other</option>
+                            </select>
                             <span asp-validation-for="WebPage.PageDescription" class="text-danger"></span>
                         </div>
 
                         <div class="form-group">
-                            <label asp-for="WebPage.PageContent" class="control-label"></label>
-                            <input asp-for="WebPage.PageContent" class="form-control" />
+                            <label for="Prompt">Describe Your Page</label>
+                            <button type="button" class="btn btn-sm btn-link p-0 ms-2"
+                                    onclick="document.getElementById('WebPage_PageContent').value='A premium golf course offering memberships, tournaments, and a scenic clubhouse. Modern layout with a gallery, pricing, and contact section.';">
+                                    Use Example
+                            </button>
+                            <textarea asp-for="WebPage.PageContent" class="form-control" rows="5"
+                                      placeholder="e.g., Describe your business, services, and design preferences..."></textarea>
                             <span asp-validation-for="WebPage.PageContent" class="text-danger"></span>
                         </div>
 
                         <div class="d-flex justify-content-between align-items-center">
                             <a asp-page="Index" class="btn btn-secondary mt-1">Cancel</a>
-                            <button type="submit" value="Create" class="btn btn-outline mt-1">Create Page</button>
+                            <button type="submit" class="btn btn-outline mt-1" id="submitBtn">Create Page</button>
                         </div>
                     </form>
                 </div>
@@ -89,8 +102,39 @@
     </div>
 </div>
 
+<!-- Bootstrap Loader Overlay -->
+<div id="loadingOverlay"
+     class="position-fixed top-0 start-0 w-100 h-100 bg-white bg-opacity-75 justify-content-center align-items-center"
+     style="display: none; z-index: 1050;">
+    <div class="spinner-border text-primary" role="status" style="width: 4rem; height: 4rem;">
+        <span class="visually-hidden">Generating page...</span>
+    </div>
+    <div class="ms-3 fs-5">Please wait while we generate your landing page...</div>
+</div>
+
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.getElementById("webPageForm");
+            const loader = document.getElementById("loadingOverlay");
+            const submitBtn = document.getElementById("submitBtn");
+
+            loader.classList.remove("d-flex");
+            loader.style.display = "none";
+
+            submitBtn.addEventListener("click", function () {
+                setTimeout(() => {
+                    const hasErrors = form.querySelectorAll(".input-validation-error").length > 0;
+                    if (!hasErrors) {
+                        loader.classList.add("d-flex");
+                        loader.style.display = "flex";
+                    }
+                }, 50);
+            });
+        });
+    </script>
 }

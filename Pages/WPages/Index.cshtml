@@ -43,9 +43,6 @@
                 @Html.DisplayNameFor(model => model.WebPage[0].PageDescription)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.WebPage[0].PageContent)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.WebPage[0].CreatedAt)
             </th>
             <th></th>
@@ -64,14 +61,12 @@
                 @Html.DisplayFor(modelItem => item.PageDescription)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PageContent)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.CreatedAt)
             </td>
             <td>
-                    <a asp-page="./Edit" asp-route-id="@item.ID" class="btn btn-primary btn-sm">Edit</a> |
-                    <a asp-page="./Details" asp-route-id="@item.ID" class="btn btn-warning btn-sm">Details</a> |
+                    <a asp-page="./Edit" asp-route-id="@item.ID" class="btn btn-primary btn-sm">Edit Page</a>
+                    <a asp-page="./Details" asp-route-id="@item.ID" class="btn btn-warning btn-sm" target="_blank">View Page</a>
+                    <a asp-page-handler="Export" asp-route-id="@item.ID" class="btn btn-success btn-sm" target="_blank">Export</a>
                     <a asp-page="./Delete" asp-route-id="@item.ID" class="btn btn-danger btn-sm">Delete</a>
             </td>
         </tr>
