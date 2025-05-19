@@ -34,6 +34,9 @@ namespace AI_WebsiteBuilder
                 options.AddPolicy("MemberOnly", policy => policy.RequireRole("Member"));
             });
 
+            // Register http client service for OpenAI API usage
+            builder.Services.AddHttpClient();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
