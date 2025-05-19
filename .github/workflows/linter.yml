@@ -22,17 +22,14 @@ jobs:
         uses: github/super-linter@v4
         # Specify environment variables for the superlinter
         env:
-          VALIDATE_ALL_CODEBASE: true
+          VALIDATE_ALL_CODEBASE: false
           VALIDATE_YAML: false
           VALIDATE_MARKDOWN: false
-          VALIDATE_CSHARP: true
           VALIDATE_CSS: false
           VALIDATE_HTML: false
           VALIDATE_JAVASCRIPT_ES: false
           VALIDATE_JAVASCRIPT_STANDARD: false
           VALIDATE_NATURAL_LANGUAGE: false
           VALIDATE_SQL: false
-          IGNORE_GITIGNORED_FILES: true
           DEFAULT_BRANCH: master
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-          FILTER_REGEX_INCLUDE: .*Services/.*
