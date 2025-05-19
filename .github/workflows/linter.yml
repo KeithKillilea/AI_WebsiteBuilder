@@ -32,4 +32,5 @@ jobs:
           VALIDATE_NATURAL_LANGUAGE: false
           VALIDATE_SQL: false
           DEFAULT_BRANCH: master
+          FILTER_REGEX_INCLUDE: .*Pages/.*
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
