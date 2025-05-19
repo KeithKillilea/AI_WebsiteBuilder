@@ -1,0 +1,28 @@
+name: Super-Linter
+
+# Run this workflow every time a new commit is pushed to the repository
+on: [push, workflow_dispatch]
+
+jobs:
+  # Set the job key. The key is displayed as the job name when a job name is not provided
+  super-lint:
+    # Name the job
+    name: Lint code based
+    # Set the type of virtual machine to execute the GH Actions runner on
+    runs-on: ubuntu-latest
+    
+
+    steps:
+      # Check out a copy of our repository on the ubuntu-latest virtual machine
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Run the Super-linter action
+      - name: Run superlinter
+        uses: github/super-linter@v4
+        # Specify environment variables for the superlinter
+        env:
+          VALIDATE_ALL_CODEBASE: true
+          VALIDATE_YAML: false
+          DEFAULT_BRANCH: main
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
