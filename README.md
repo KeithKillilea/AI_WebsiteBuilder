@@ -7,3 +7,6 @@ If you encounter a problem with running the program, it is likely due to the SQL
 2. Apply the Migration with this command: Update-Database
 
 Now rebuild the project and it will work. 
+
+[![.NET](https://github.com/KeithKillilea/AI_WebsiteBuilder/actions/workflows/dotnet.yml/badge.svg)](https://github.com/KeithKillilea/AI_WebsiteBuilder/actions/workflows/dotnet.yml)
+[![Label approved pull requests](https://github.com/KeithKillilea/AI_WebsiteBuilder/actions/workflows/approval-workflow.yml/badge.svg)](https://github.com/KeithKillilea/AI_WebsiteBuilder/actions/workflows/approval-workflow.yml)
