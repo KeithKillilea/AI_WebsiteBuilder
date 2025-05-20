@@ -30,9 +30,21 @@ jobs:
       - name: Publish
         run: dotnet publish -c Release -o ./publish
 
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Start Azure App Service (Staging)
+        run: az webapp start --name ${{ secrets.AZURE_WEBAPP_NAME_STAGE }} --resource-group AIWebBuilderGroup
+
       - name: Deploy to Azure Web App (Staging)
         uses: azure/webapps-deploy@v2
         with:
           app-name: ${{ secrets.AZURE_WEBAPP_NAME_STAGE }}
           publish-profile: ${{ secrets.AZURE_WEBAPP_AI_STAGE }}
           package: ./publish
+
+      - name: Stop Azure App Service (Staging)
+        run: az webapp stop --name ${{ secrets.AZURE_WEBAPP_NAME_STAGE }} --resource-group AIWebBuilderGroup
+
