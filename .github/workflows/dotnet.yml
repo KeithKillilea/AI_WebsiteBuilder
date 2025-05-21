@@ -27,6 +27,8 @@ jobs:
         dotnet-version: 9.0.x
     - name: Install dependencies
       run: dotnet restore
+    - name: Build
+      run: dotnet build --no-restore
     - name: Test with dotnet
       run: dotnet test --no-restore --logger trx --results-directory "TestResults-${{ matrix.dotnet-version }}"
     - name: Upload dotnet test results
@@ -35,14 +37,14 @@ jobs:
         name: dotnet-results-${{ matrix.dotnet-version }}
         path: TestResults-${{ matrix.dotnet-version }}
       if: ${{ always() }}
-    - name: Build
-      run: dotnet build --no-restore
 
-    - name: Run Security Scan
+    # Add CodeQL initialization before the build step - GitHub AI Recommended from Scan
+    - name: Initialize CodeQL
       uses: github/codeql-action/init@v3
       with:
         languages: csharp
 
+    # Perform the CodeQL analysis after a successful build - GitHub AI Recommended from Scan
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
 
