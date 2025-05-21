@@ -10,3 +10,6 @@ Now rebuild the project and it will work.
 
 [![.NET](https://github.com/KeithKillilea/AI_WebsiteBuilder/actions/workflows/dotnet.yml/badge.svg)](https://github.com/KeithKillilea/AI_WebsiteBuilder/actions/workflows/dotnet.yml)
 [![Label approved pull requests](https://github.com/KeithKillilea/AI_WebsiteBuilder/actions/workflows/approval-workflow.yml/badge.svg)](https://github.com/KeithKillilea/AI_WebsiteBuilder/actions/workflows/approval-workflow.yml)
+[![Deploy to Azure Production](https://github.com/KeithKillilea/AI_WebsiteBuilder/actions/workflows/deploy-to-production.yml/badge.svg)](https://github.com/KeithKillilea/AI_WebsiteBuilder/actions/workflows/deploy-to-production.yml)
+[![Deploy to Azure Staging](https://github.com/KeithKillilea/AI_WebsiteBuilder/actions/workflows/deploy-to-staging.yml/badge.svg)](https://github.com/KeithKillilea/AI_WebsiteBuilder/actions/workflows/deploy-to-staging.yml)
+[![Super-Linter](https://github.com/KeithKillilea/AI_WebsiteBuilder/actions/workflows/linter.yml/badge.svg)](https://github.com/KeithKillilea/AI_WebsiteBuilder/actions/workflows/linter.yml)
