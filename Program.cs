@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Identity.UI.Services; // IEmailSender interface
-using AI_WebsiteBuilder.Services; // FakeEmailSender
+using AI_WebsiteBuilder.Services; // FakeEmailSender & OpenAI Key
 
 namespace AI_WebsiteBuilder
 {
@@ -36,6 +36,8 @@ namespace AI_WebsiteBuilder
 
             // Register http client service for OpenAI API usage
             builder.Services.AddHttpClient();
+
+            var openAiKey = builder.Configuration["OpenAI:ApiKey"];
 
             var app = builder.Build();
 
