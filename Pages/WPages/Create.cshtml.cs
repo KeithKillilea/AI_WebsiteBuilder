@@ -127,7 +127,7 @@ namespace AI_WebsiteBuilder.Pages.WPages
             var cleanHtml = rawHtml
                 .Replace("```html", "", StringComparison.OrdinalIgnoreCase)
                 .Replace("```", "", StringComparison.OrdinalIgnoreCase)
-                .Trim();
+                .Trim() ?? string.Empty; // Ensure cleanHtml is not null - GitHub AI Recommended from Scan
 
             // Truncate anything after </html> in case of OpenAI random extra output of info
             var htmlEndIndex = cleanHtml.IndexOf("</html>", StringComparison.OrdinalIgnoreCase);

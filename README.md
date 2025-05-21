@@ -19,3 +19,4 @@ To run this project locally, you must add your OpenAI API key, please run this c
 [![Deploy to Azure Production](https://github.com/KeithKillilea/AI_WebsiteBuilder/actions/workflows/deploy-to-production.yml/badge.svg)](https://github.com/KeithKillilea/AI_WebsiteBuilder/actions/workflows/deploy-to-production.yml)
 [![Deploy to Azure Staging](https://github.com/KeithKillilea/AI_WebsiteBuilder/actions/workflows/deploy-to-staging.yml/badge.svg)](https://github.com/KeithKillilea/AI_WebsiteBuilder/actions/workflows/deploy-to-staging.yml)
 [![Super-Linter](https://github.com/KeithKillilea/AI_WebsiteBuilder/actions/workflows/linter.yml/badge.svg)](https://github.com/KeithKillilea/AI_WebsiteBuilder/actions/workflows/linter.yml)
+[![CodeQL Analysis](https://github.com/KeithKillilea/AI_WebsiteBuilder/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/KeithKillilea/AI_WebsiteBuilder/actions/workflows/codeql-analysis.yml)
