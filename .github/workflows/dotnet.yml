@@ -35,5 +35,13 @@ jobs:
         name: dotnet-results-${{ matrix.dotnet-version }}
         path: TestResults-${{ matrix.dotnet-version }}
       if: ${{ always() }}
+    - name: Run Security Scan
+      uses: github/codeql-action/init@v2
+      with:
+        languages: csharp
+
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v2
+
     - name: Build
       run: dotnet build --no-restore
