@@ -8,6 +8,12 @@ If you encounter a problem with running the program, it is likely due to the SQL
 
 Now rebuild the project and it will work. 
 
+## OpenAI Key Setup
+
+To run this project locally, you must add your OpenAI API key, please run this command in your terminal window:
+
+`dotnet user-secrets set "OpenAI:ApiKey" "sk-REPLACE_WITH_YOUR_KEY"`
+
 [![.NET](https://github.com/KeithKillilea/AI_WebsiteBuilder/actions/workflows/dotnet.yml/badge.svg)](https://github.com/KeithKillilea/AI_WebsiteBuilder/actions/workflows/dotnet.yml)
 [![Label approved pull requests](https://github.com/KeithKillilea/AI_WebsiteBuilder/actions/workflows/approval-workflow.yml/badge.svg)](https://github.com/KeithKillilea/AI_WebsiteBuilder/actions/workflows/approval-workflow.yml)
 [![Deploy to Azure Production](https://github.com/KeithKillilea/AI_WebsiteBuilder/actions/workflows/deploy-to-production.yml/badge.svg)](https://github.com/KeithKillilea/AI_WebsiteBuilder/actions/workflows/deploy-to-production.yml)
