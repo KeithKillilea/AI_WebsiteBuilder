@@ -1,10 +1,8 @@
 name: "CodeQL Analysis"
 
 on:
-  push:
-    branches: [ master, development ]
   pull_request:
-    branches: [ master, development ]
+    branches: [ master, development, release ]
 
 jobs:
   analyze:
@@ -34,3 +32,4 @@ jobs:
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
+
