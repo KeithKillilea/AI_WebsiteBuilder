@@ -48,8 +48,8 @@ namespace AI_WebsiteBuilder.Pages
 
             Input = new EditInputModel
             {
-                Email = user.Email,
-                Role = roles.FirstOrDefault()
+                Email = user.Email ?? string.Empty, // Fix nullable assignment - GitHub AI Recommended from Scan
+                Role = roles.FirstOrDefault() ?? string.Empty // Default to empty string if no role - GitHub AI Recommended from Scan
             };
 
             Id = user.Id;
